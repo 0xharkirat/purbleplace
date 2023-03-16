@@ -1,6 +1,40 @@
 import pyautogui, time, os
 
 
+import sys
+
+# Get the selected options from the command line arguments
+selected_options = sys.argv[1:]
+
+
+baseShape = {
+    'Round': 1,
+    'Square': 2,
+    'Heart': 3
+}
+
+baseColor = {
+    'Choc': 1,
+    'Pink': 2,
+    'Yellow': 3
+}
+
+topColor = {
+    'Choc': 1,
+    'Pink': 2,
+    'Yellow': 3
+}
+
+cherry = {
+    'Triple': 1,
+    'Smiley': 2,
+    'Heart': 3,
+    'Leaf': 4
+}
+
+selecte_options_numbers = [baseShape[selected_options[0]], baseColor[selected_options[1]], topColor[selected_options[2]], cherry[selected_options[3]]]
+
+
 GAME_REGION = ()
 BASE_HEART_COORD = (251,686)
 BOX_COORD = (245,640)
@@ -17,8 +51,6 @@ RIGHT_COORD = (324,740)
 SMILEY_COORD = (590,667)
 YELLOWFILL_COORD = (377,690)
 YELLOWTOP_COORD = (500,690)
-
-time.sleep(5)
 
 def main():
     print('Program Started. Press Ctrl-C to abort at any time.')
@@ -46,46 +78,46 @@ def getGameRegion():
 
 def startBaking():
 
-    cakes = 0
+    
 
     # set the ingredients
-    while cakes < 5:
-        base = getBase(int(input('Enter the base Number (1,2,3): ')))
-        fill = getFill(int(input('Enter the fill Number (1, 2, 3): ')))
-        top = getTop(int(input('Enter the top number (1, 2, 3): ')))
-        cherry = getCherry(int(input('Enter the cherry Number: ')))
+    
+    base = getBase(selecte_options_numbers[0])
+    fill = getFill(selecte_options_numbers[1])
+    top = getTop(selecte_options_numbers[2])
+    cherry = getCherry(selecte_options_numbers[3])
 
-        # make base
-        pyautogui.moveTo(base)
-        pyautogui.doubleClick()
+    # make base
+    pyautogui.moveTo(base)
+    pyautogui.doubleClick()
 
-        # moveNext
-        moveToRight()
+    # moveNext
+    moveToRight()
+
+    
+    # fill base
+    pyautogui.moveTo(fill)
+    pyautogui.doubleClick()
+
+    # moveNext
+    moveToRight()
+
+    # put top
+    pyautogui.moveTo(top)
+    pyautogui.doubleClick()
+
+    # moveNext
+    moveToRight()
+
+    # put cherry
+    pyautogui.moveTo(cherry)
+    pyautogui.doubleClick()
+
+    # moveNext
+    moveToRight()
+    moveToRight()
 
         
-        # fill base
-        pyautogui.moveTo(fill)
-        pyautogui.doubleClick()
-
-        # moveNext
-        moveToRight()
-
-        # put top
-        pyautogui.moveTo(top)
-        pyautogui.doubleClick()
-
-        # moveNext
-        moveToRight()
-
-        # put cherry
-        pyautogui.moveTo(cherry)
-        pyautogui.doubleClick()
-
-        # moveNext
-        moveToRight()
-        moveToRight()
-
-        cakes += 1
 
 
 
