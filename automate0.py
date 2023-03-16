@@ -27,11 +27,7 @@ class TripleCake(DoubleCake):
         self.SECSHEET = secSheet
         self.THIRDFILL = thirdfill
         self.TOPPINGS = toppings
-    
-
-
-GAME_REGION = ()
-    
+       
 
 class Easy:
 
@@ -310,32 +306,383 @@ class Intermediate(Easy):
         self.moveToRight()
 
 
+class Hard(Intermediate):
+
+    FIRE_COORD = (735,618)
+    ICING_COORD = (730,673)
+
+    def __init__(self, selectedOptions):
+        self.Cake = TripleCake(shape=selectedOptions[0], fill=selectedOptions[1], sheet=selectedOptions[2], secFill=selectedOptions[3], secSheet=selectedOptions[4], thirdfill=selectedOptions[5], top=selectedOptions[6], cherry=selectedOptions[7], toppings=selectedOptions[8])
+
+        self.position = int(selectedOptions[9])
+
+    def selectedSecondSheet(self):
+        if self.Cake.SECSHEET == 'Brown':
+            return self.CHOCSHEET_COORD
+        elif self.Cake.SECSHEET == 'Green':
+            return self.GREENSHEET_COORD
+        elif self.Cake.SECSHEET == 'White':
+            return self.WHITESHEET_COORD
+        else:
+            raise Exception("Sheet number out of range, select only from (Brown, Green, white)")
+        
+    def selectedThirdFill(self):
+        if self.Cake.THIRDFILL == 'Choc':
+            return self.CHOCFILL_COORD
+        elif self.Cake.THIRDFILL == 'Pink':
+            return self.PINKFILL_COORD
+        elif self.Cake.THIRDFILL == 'Yellow':
+            return self.YELLOWFILL_COORD
+        else:
+            raise Exception('Fill Number out of range. Select only from (CHoc, Pink, Yellow)')
+        
+    def selectedTopping(self):
+        if self.Cake.TOPPINGS == 'Fire':
+            return self.FIRE_COORD
+        elif self.Cake.TOPPINGS == 'Icing Sugar':
+            return self.ICING_COORD
+        elif self.Cake.TOPPINGS == 'N/A':
+            return False
+        else:
+            raise Exception('Fill Number out of range. Select only from (CHoc, Pink, Yellow)')
+        
+    def selectedTop(self):
+        if self.Cake.TOP == 'Choc':
+            return self.CHOCTOP_COORD
+        elif self.Cake.TOP == 'Pink':
+            return self.PINKTOP_COORD
+        elif self.Cake.TOP == 'Yellow':
+            return self.YELLOWTOP_COORD
+        elif self.Cake.TOP == 'N/A':
+            return False
+        else:
+            raise Exception('Fill Number out of range. Select only from (CHoc, Pink, Yellow)')
+        
+    def startBaking(self):
+        for i in range(self.position - 1):
+            self.moveToLeft()
+
+        self.position = 4 
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+         # moveNext
+        self.moveToRight()
+
+    
+        # fill base
+        pyautogui.moveTo(self.selectedFill())
+        pyautogui.doubleClick()
+
+         # moveNext
+        self.moveToRight()
+
+        # sheet
+        pyautogui.moveTo(self.selectedSheet())
+        pyautogui.doubleClick()
+
+        # move back three
+
+        for i in range(4):
+            self.moveToLeft()
+
+        for i in range(2):
+            self.moveToRight()
+
+        # second shape
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+         # moveNext
+        self.moveToRight()
+
+    
+        # fill second base
+        pyautogui.moveTo(self.selectedSecondFill())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        # second sheet
+        pyautogui.moveTo(self.selectedSecondSheet())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedFill())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedSheet())
+        pyautogui.doubleClick()
+
+        for i in range(4):
+            self.moveToLeft()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedThirdFill())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedSecondFill())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        if self.selectedTop():
+            pyautogui.moveTo(self.selectedTop())
+            pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedSecondSheet())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedFill())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedCherry())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedSheet())
+        pyautogui.doubleClick()
+
+        for i in range(4):
+            self.moveToLeft()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedThirdFill())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedSecondFill())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        if self.selectedTop():
+            pyautogui.moveTo(self.selectedTop())
+            pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedSecondSheet())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedFill())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        if self.selectedTopping():
+            pyautogui.moveTo(self.selectedTopping())
+            pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedCherry())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedSheet())
+        pyautogui.doubleClick()
+
+        for i in range(4):
+            self.moveToLeft()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedThirdFill())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedSecondFill())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        if self.selectedTop():
+            pyautogui.moveTo(self.selectedTop())
+            pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedSecondSheet())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedFill())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+        print('first half is cleared')
+
+        if self.selectedTopping():
+            pyautogui.moveTo(self.selectedTopping())
+            pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedCherry())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedSheet())
+        pyautogui.doubleClick()
+
+        for i in range(4):
+            self.moveToLeft()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedThirdFill())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedSecondFill())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        if self.selectedTop():
+            pyautogui.moveTo(self.selectedTop())
+            pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedSecondSheet())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedFill())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        if self.selectedTopping():
+            pyautogui.moveTo(self.selectedTopping())
+            pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedCherry())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedSheet())
+        pyautogui.doubleClick()
+
+        for i in range(3):
+            self.moveToLeft()
+
+
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedThirdFill())
+        pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedSecondFill())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        if self.selectedTop():
+            pyautogui.moveTo(self.selectedTop())
+            pyautogui.doubleClick()
+        pyautogui.moveTo(self.selectedSecondSheet())
+        pyautogui.doubleClick()
+
+        for i in range(2):
+            self.moveToLeft()
+
+        pyautogui.moveTo(self.selectedShape())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+
+        pyautogui.moveTo(self.selectedThirdFill())
+        pyautogui.doubleClick()
+
+        self.moveToRight()
+        self.moveToRight()
+
+        if self.selectedTop():
+            pyautogui.moveTo(self.selectedTop())
+            pyautogui.doubleClick()
+        print("marked 0")
+        pyautogui.moveTo(self.selectedCherry())
+        pyautogui.doubleClick()
+        if self.selectedTopping():
+            pyautogui.moveTo(self.selectedTopping())
+            pyautogui.doubleClick()
         
 
+        print("marked 1")
+        time.sleep(1.5)
 
+        self.moveToRight()
+
+        if self.selectedTopping():
+            pyautogui.moveTo(self.selectedTopping())
+            pyautogui.doubleClick()
+        print('marked 2')
+        pyautogui.moveTo(self.selectedCherry())
+        pyautogui.doubleClick()
+
+        time.sleep(1.5)
+        self.moveToRight()
+
+        if self.selectedTopping():
+            pyautogui.moveTo(self.selectedTopping())
+        
+            pyautogui.doubleClick()
+        print('marked 5')
+        time.sleep(1.5)
+        self.moveToRight()
 
 
 
 
 def main():
 
-    game = None
-
     if len(selected_options) == 4:
         # Easy game
         
         game = Easy(selectedOptions=selected_options)
+        game.startBaking()
 
     elif len(selected_options) == 7:
         game = Intermediate(selectedOptions=selected_options)
-        
-    for i in range(5):
-        if i < 3:
-            game.startBaking()
-        else:
-            game.twoAtATime()
-            break
-    
+        for i in range(5):
+            if i < 3:
+                game.startBaking()
+            else:
+                game.twoAtATime()
+                break
+
+    elif len(selected_options) == 10:
+        game = Hard(selectedOptions=selected_options)
+
+        game.startBaking()
+
+
     
 main()
 

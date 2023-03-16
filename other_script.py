@@ -72,8 +72,31 @@ for i, (option_label, option_list) in enumerate(options2.items()):
 
 
 tab3 = ttk.Frame(notebook)
-label3 = tk.Label(tab3, text="This is tab 3")
-label3.pack()
+options3 = {
+    'Select Base Shape': ['Round', 'Square', 'Heart'],
+    'Select Base Color': ['Choc', 'Pink', 'Yellow'],
+    'Select Sheet Color': ['Brown', 'Green', 'White'],
+    'Select Second Base Color': ['Choc', 'Pink', 'Yellow'],
+    'Select Second Sheet Color': ['Brown', 'Green', 'White'],
+    'Select third Base Color': ['Choc', 'Pink', 'Yellow'],
+    'Select Base Top': ['N/A', 'Choc', 'Pink', 'Yellow'],
+    'Select Cherry on Top': ['Triple', 'Smiley', 'Heart', 'Leaf'],
+    'Select Toppings': ['N/A', 'Fire', 'Icing Sugar'],
+    'Select Position of white paper': [1,2,3,4,5,6]
+}
+dropdowns3 = []
+label = []
+# label1 = tk.Label(tab1, text="This is tab 1")
+# label1.pack()
+for i, (option_label, option_list) in enumerate(options3.items()):
+    label = tk.Label(tab3, text=option_label)
+    label.grid(row=i, column=0, padx=10, pady=10)
+    labels.append(label)
+
+    var = tk.StringVar()
+    dropdown = tk.OptionMenu(tab3, var, *option_list)
+    dropdown.grid(row=i, column=1, padx=10, pady=10)
+    dropdowns3.append(var)
 
 # Add tabs to notebook
 notebook.add(tab1, text="Tab 1")
@@ -110,6 +133,17 @@ def pass_selected_options2():
 
 button2 = tk.Button(tab2, text='Pass Selected Options', command=pass_selected_options2)
 button2.grid(row=len(options2), column=0, columnspan=2, padx=10, pady=10)
+
+def pass_selected_options3():
+    global selected_options
+    selected_options = [dropdown.get() for dropdown in dropdowns3]
+    dropdowns3[-1].set('')
+    print('Intermediate game')
+    print(selected_options)
+    subprocess.call(['python', 'automate0.py', *selected_options])
+
+button3 = tk.Button(tab3, text='Pass Selected Options', command=pass_selected_options3)
+button3.grid(row=len(options3), column=0, columnspan=2, padx=10, pady=10)
 
 # Run GUI window
 root.mainloop()
