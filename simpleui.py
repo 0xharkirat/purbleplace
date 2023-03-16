@@ -34,10 +34,10 @@ for i, (option_label, option_list) in enumerate(options.items()):
 def pass_selected_options():
     global selected_options
     selected_options = [dropdown.get() for dropdown in dropdowns]
-    for dropdown in dropdowns:
-        dropdown.set('')
     print(selected_options)
     subprocess.call(['python', 'automate0.py', *selected_options])
+    for dropdown in dropdowns:
+        dropdown.set('')
 
 # Create the button to pass the selected options to the other script
 button = tk.Button(root, text='Pass Selected Options', command=pass_selected_options)
