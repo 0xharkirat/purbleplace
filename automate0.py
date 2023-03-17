@@ -530,7 +530,6 @@ class Hard(Intermediate):
         pyautogui.doubleClick()
 
         self.moveToRight()
-        print('first half is cleared')
 
         if self.selectedTopping():
             pyautogui.moveTo(self.selectedTopping())
@@ -626,15 +625,12 @@ class Hard(Intermediate):
         if self.selectedTop():
             pyautogui.moveTo(self.selectedTop())
             pyautogui.doubleClick()
-        print("marked 0")
         pyautogui.moveTo(self.selectedCherry())
         pyautogui.doubleClick()
         if self.selectedTopping():
             pyautogui.moveTo(self.selectedTopping())
             pyautogui.doubleClick()
         
-
-        print("marked 1")
         time.sleep(1.5)
 
         self.moveToRight()
@@ -642,7 +638,6 @@ class Hard(Intermediate):
         if self.selectedTopping():
             pyautogui.moveTo(self.selectedTopping())
             pyautogui.doubleClick()
-        print('marked 2')
         pyautogui.moveTo(self.selectedCherry())
         pyautogui.doubleClick()
 
@@ -653,7 +648,6 @@ class Hard(Intermediate):
             pyautogui.moveTo(self.selectedTopping())
         
             pyautogui.doubleClick()
-        print('marked 5')
         time.sleep(1.5)
         self.moveToRight()
 
