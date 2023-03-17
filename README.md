@@ -8,5 +8,6 @@ I have used pyautogui module for automating mouse clicks, detecting elements and
 
 I have made simple UI using tkinter module, so that I don't have to write commands in the terminal.
 
-Hard Mode demo
-https://github.com/0xharkirat/purbleplace/blob/main/video-demo/purble-place-hard%20-%20Made%20with%20Clipchamp.mp4
+
+##  Advanced Level
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sEGVl7XB6to" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
