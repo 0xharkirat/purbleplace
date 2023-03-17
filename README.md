@@ -10,12 +10,10 @@ I have made simple UI using tkinter module, so that I don't have to write comman
 
 
 ##  Advanced Level
-<iframe
-    width="640"
-    height="480"
-    src="https://www.youtube.com/embed/UmX4kyB2wfg"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen
->
-</iframe>
+https://youtu.be/sEGVl7XB6to
+
+## Intermediate Level
+https://youtu.be/pq6kPiAkPTM
+
+## Easy Level
+https://youtu.be/a3CMqUEwj2g
